@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projetos | O Analista</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --amarelo:#f6c945; --creme:#fbf3dc; --marinho:#1f2a44; --vermelho:#d8432e; --verde:#2f8a4c; --tinta:#1b1b1b; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--creme); color:var(--tinta); font-family:"Comic Neue", system-ui, sans-serif; font-size:17px; line-height:1.45; }
+  .topo { background:var(--marinho); color:#fff; padding:10px 16px; font-weight:700; letter-spacing:.04em; font-size:14px; display:flex; justify-content:space-between; }
+  main { max-width:620px; margin:0 auto; padding:18px 16px 40px; }
+  h1 { font-family:Bangers, "Comic Neue", sans-serif; font-weight:400; font-size:38px; letter-spacing:.03em; line-height:1.05; margin:6px 0 4px; background:var(--amarelo); border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:10px 14px; }
+  .sub { margin:14px 0 18px; }
+  .caixa { background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:16px; margin:18px 0; }
+  .caixa h2 { font-family:Bangers, sans-serif; font-weight:400; letter-spacing:.04em; font-size:26px; margin:0 0 10px; color:var(--marinho); }
+  label { display:block; font-weight:700; margin:12px 0 4px; }
+  .dica { font-size:14px; color:#555; margin-top:2px; }
+  .campo { display:flex; align-items:center; border:2px solid var(--tinta); background:var(--creme); }
+  .campo span { padding:0 10px; font-weight:700; }
+  .campo input { flex:1; border:0; background:transparent; font:inherit; font-size:19px; padding:10px 8px; min-width:0; }
+  .campo input:focus { outline:3px solid var(--amarelo); }
+  .check { display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px dashed #bbb; cursor:pointer; }
+  .check:last-child { border-bottom:0; }
+  .check input { width:22px; height:22px; margin-top:2px; accent-color:var(--verde); flex:none; }
+  .resultado { background:var(--marinho); color:#fff; }
+  .resultado h2 { color:var(--amarelo); }
+  .valor { font-family:Bangers, sans-serif; font-size:46px; letter-spacing:.02em; color:var(--amarelo); line-height:1; margin:6px 0; }
+  .linha { display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.2); }
+  .linha:last-child { border-bottom:0; }
+  .linha b { white-space:nowrap; }
+  .alerta { background:var(--vermelho); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .ganho { background:var(--verde); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .cta { background:var(--amarelo); }
+  .cta p { margin:6px 0; }
+  .aviso { font-size:13px; color:#555; margin-top:22px; }
+
+  ol.passos { padding-left:0; list-style:none; counter-reset:p; }
+  ol.passos li { counter-increment:p; margin:14px 0; padding-left:52px; position:relative; }
+  ol.passos li::before { content:counter(p); position:absolute; left:0; top:-2px; font-family:Bangers,sans-serif; font-size:30px; width:40px; height:40px; background:var(--vermelho); color:#fff; border:3px solid var(--tinta); display:flex; align-items:center; justify-content:center; }
+  table { width:100%; border-collapse:collapse; }
+  td { padding:8px 4px; border-bottom:1px dashed #bbb; }
+  td:last-child { text-align:right; white-space:nowrap; font-weight:700; }
+  tr.total td { border-top:3px solid var(--tinta); border-bottom:0; font-size:19px; }
+  ul.check { list-style:none; padding:0; }
+  ul.check li { padding:8px 0 8px 34px; position:relative; border-bottom:1px dashed #bbb; }
+  ul.check li::before { content:""; position:absolute; left:0; top:9px; width:20px; height:20px; border:3px solid var(--tinta); background:#fff; }
+  a.botao { display:block; text-decoration:none; color:var(--tinta); background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:14px 16px; margin:16px 0; }
+  a.botao b { font-family:Bangers,sans-serif; font-weight:400; font-size:24px; letter-spacing:.03em; color:var(--marinho); display:block; }
+  a.botao span.tag { display:inline-block; background:var(--amarelo); border:2px solid var(--tinta); padding:0 8px; font-size:13px; font-weight:700; margin-bottom:6px; }
+  ul.lista { list-style:none; padding:0; margin:0; }
+  ul.lista li { padding:8px 0 8px 30px; position:relative; border-bottom:1px dashed #bbb; }
+  ul.lista li:last-child { border-bottom:0; }
+  ul.lista li::before { content:"✓"; position:absolute; left:4px; top:7px; font-weight:700; color:var(--verde); }
+</style>
+</head>
+<body>
+<div class="topo"><span>O ANALISTA</span><span>@OANALISTA.BR</span></div>
+<main>
+  <h1>Projetos do O Analista</h1>
+  <p class="sub">Projetos fechados, com começo, meio e fim. Você sabe o que vai receber antes de começar, e o valor é combinado depois do diagnóstico, de acordo com o tamanho do seu negócio.</p>
+  <section class="caixa"><span class="tag" style="display:inline-block;background:var(--amarelo);border:2px solid var(--tinta);padding:0 8px;font-size:13px;font-weight:700">Valuation</span>
+<h2 style="margin-top:8px">Quanto vale a sua empresa</h2><p>Para quem quer vender, trazer um sócio, captar dinheiro ou só saber quanto o negócio vale.</p><p><b>O que você recebe:</b></p><ul class="lista"><li>Avaliação da empresa pelo lucro de verdade, com cenários</li><li>O que puxa o valor para cima e para baixo no seu caso</li><li>Plano para a empresa valer mais em 12 meses</li><li>Relatório final e conversa de apresentação</li></ul></section><section class="caixa"><span class="tag" style="display:inline-block;background:var(--amarelo);border:2px solid var(--tinta);padding:0 8px;font-size:13px;font-weight:700">Precificação</span>
+<h2 style="margin-top:8px">Preço certo, lucro de verdade</h2><p>Para quem vende bem mas não sabe se o preço cobre tudo.</p><p><b>O que você recebe:</b></p><ul class="lista"><li>Custo real de cada produto ou serviço</li><li>Margem de cada item e quais dão prejuízo</li><li>Tabela de preços nova com a margem que você quer</li><li>Regra simples para dar desconto sem perder dinheiro</li></ul></section><section class="caixa"><span class="tag" style="display:inline-block;background:var(--amarelo);border:2px solid var(--tinta);padding:0 8px;font-size:13px;font-weight:700">Caixa sob controle</span>
+<h2 style="margin-top:8px">Fim do aperto no caixa</h2><p>Para quem vende e mesmo assim falta dinheiro para pagar as contas.</p><p><b>O que você recebe:</b></p><ul class="lista"><li>Fluxo de caixa montado com você, por data</li><li>Plano para as dívidas, começando pelas mais caras</li><li>Reserva da empresa e meta de caixa mínimo</li><li>Rotina de 15 minutos por semana para manter tudo em dia</li></ul></section><section class="caixa"><span class="tag" style="display:inline-block;background:var(--amarelo);border:2px solid var(--tinta);padding:0 8px;font-size:13px;font-weight:700">Check-up financeiro</span>
+<h2 style="margin-top:8px">Empresa organizada em 90 dias</h2><p>Para quem quer arrumar a casa: contas, pró-labore e controles.</p><p><b>O que você recebe:</b></p><ul class="lista"><li>Separação das contas e pró-labore definido</li><li>Os indicadores que você precisa olhar todo mês</li><li>Controles simples que cabem na sua rotina</li><li>Plano de 90 dias com metas</li></ul></section>
+  <section class="caixa cta" style="background:var(--amarelo)">
+    <h2>Por onde começar?</h2>
+    <p>Pelo <a href="../diagnostico/"><b>diagnóstico gratuito</b></a>: você responde as perguntas, recebe o relatório no WhatsApp e a gente vê juntos qual projeto resolve o seu ponto principal.</p>
+    <p><b>WhatsApp: <a href="https://wa.me/5544999743738">(44) 99974-3738</a></b></p>
+  </section>
+  <p class="aviso">Os projetos são de gestão financeira e avaliação de empresas. Não são recomendação de investimento.</p>
+</main>
+</body>
+</html>
