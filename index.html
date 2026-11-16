@@ -24,6 +24,8 @@
   header .wrap { display:flex; align-items:center; justify-content:space-between; height:60px; }
   .marca { display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-weight:800; letter-spacing:.02em; }
   .avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; border:2px solid var(--ouro); }
+  .nome { display:flex; flex-direction:column; line-height:1.1; }
+  .nome small { font-size:11px; font-weight:500; color:#aab4c9; letter-spacing:.03em; margin-top:2px; }
   .selo { width:34px; height:34px; border-radius:8px; background:var(--ouro); color:var(--navy); display:grid; place-items:center; font-weight:800; font-size:15px; }
   header nav a { color:#cfd6e6; text-decoration:none; font-size:14px; font-weight:600; margin-left:22px; }
   header nav a:hover { color:#fff; }
@@ -119,7 +121,7 @@
 
 <header>
   <div class="wrap">
-    <a class="marca" href="#"><img class="avatar" src="img/andre-avatar.jpg" alt="André Varotto">O ANALISTA</a>
+    <a class="marca" href="#"><span class="selo">OA</span><span class="nome">O ANALISTA<small>André Varotto · CNPI</small></span></a>
     <nav>
       <a href="#como">Como funciona</a>
       <a href="#projetos">Projetos</a>
