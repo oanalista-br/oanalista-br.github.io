@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulador: quanto rende o seu dinheiro no CDI | O Analista</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --amarelo:#f6c945; --creme:#fbf3dc; --marinho:#1f2a44; --vermelho:#d8432e; --verde:#2f8a4c; --azul:#3b6fb6; --tinta:#1b1b1b; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--creme); color:var(--tinta); font-family:"Comic Neue", system-ui, sans-serif; font-size:17px; line-height:1.45; }
+  .topo { background:var(--marinho); color:#fff; padding:10px 16px; font-weight:700; letter-spacing:.04em; font-size:14px; display:flex; justify-content:space-between; }
+  main { max-width:620px; margin:0 auto; padding:18px 16px 40px; }
+  h1 { font-family:Bangers, "Comic Neue", sans-serif; font-weight:400; font-size:38px; letter-spacing:.03em; line-height:1.05; margin:6px 0 4px; background:var(--amarelo); border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:10px 14px; }
+  .sub { margin:14px 0 18px; }
+  .caixa { background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:16px; margin:18px 0; }
+  .caixa h2 { font-family:Bangers, sans-serif; font-weight:400; letter-spacing:.04em; font-size:26px; margin:0 0 10px; color:var(--marinho); }
+  label { display:block; font-weight:700; margin:12px 0 4px; }
+  .dica { font-size:14px; color:#555; margin-top:2px; }
+  .grade { display:grid; grid-template-columns:1fr 1fr; gap:0 14px; }
+  .campo { display:flex; align-items:center; border:2px solid var(--tinta); background:var(--creme); }
+  .campo span { padding:0 10px; font-weight:700; white-space:nowrap; }
+  .campo input, .campo select { flex:1; border:0; background:transparent; font:inherit; font-size:19px; padding:10px 8px; min-width:0; }
+  .campo input:focus, .campo select:focus { outline:3px solid var(--amarelo); }
+  .resultado { background:var(--marinho); color:#fff; }
+  .resultado h2 { color:var(--amarelo); }
+  .valor { font-family:Bangers, sans-serif; font-size:46px; letter-spacing:.02em; color:var(--amarelo); line-height:1; margin:6px 0 12px; }
+  .linha { display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.2); }
+  .linha b { white-space:nowrap; }
+  .barras { margin-top:16px; }
+  .barra { margin:10px 0; }
+  .barra .nome { display:flex; justify-content:space-between; font-size:15px; margin-bottom:3px; }
+  .barra .trilho { background:rgba(255,255,255,.15); height:22px; border:2px solid #000; }
+  .barra .cheio { height:100%; }
+  .cta { background:var(--amarelo); }
+  .cta p { margin:6px 0; }
+  .aviso { font-size:13px; color:#555; margin-top:22px; }
+  @media (max-width:420px) { .grade { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="topo"><span>O ANALISTA</span><span>@OANALISTA.BR</span></div>
+<main>
+  <h1>Quanto rende o seu dinheiro no CDI?</h1>
+  <p class="sub">Dinheiro parado na conta perde para a inflação todo mês. Simule quanto o caixa da empresa ou a sua reserva renderiam numa aplicação que paga um percentual do CDI.</p>
+
+  <section class="caixa">
+    <h2>Seus números</h2>
+    <div class="grade">
+      <div><label for="ini">Valor que você tem hoje</label><div class="campo"><span>R$</span><input id="ini" inputmode="decimal" value="10.000"></div></div>
+      <div><label for="mes">Quanto vai guardar por mês</label><div class="campo"><span>R$</span><input id="mes" inputmode="decimal" value="500"></div></div>
+      <div><label for="prazo">Por quanto tempo</label><div class="campo"><input id="prazo" inputmode="numeric" value="12"><span>meses</span></div></div>
+      <div><label for="pct">Rende quanto do CDI</label><div class="campo"><input id="pct" inputmode="decimal" value="100"><span>% do CDI</span></div></div>
+      <div><label for="cdi">CDI ao ano</label><div class="campo"><input id="cdi" inputmode="decimal" value="13,65"><span>% a.a.</span></div><div class="dica">Anda perto da Selic. Atualize se mudar.</div></div>
+      <div><label for="tipo">Tipo de aplicação</label><div class="campo"><select id="tipo"><option value="ir">CDB ou Tesouro Selic (tem IR)</option><option value="isento">LCI ou LCA (isento de IR)</option></select></div></div>
+    </div>
+  </section>
+
+  <section class="caixa resultado" aria-live="polite">
+    <h2>No fim do prazo você teria</h2>
+    <div class="valor" id="liquido">R$ 0</div>
+    <div class="linha"><span>Total que você colocou</span><b id="investido">R$ 0</b></div>
+    <div class="linha"><span>Rendimento bruto</span><b id="bruto">R$ 0</b></div>
+    <div class="linha"><span>Imposto de renda (aproximado)</span><b id="ir">R$ 0</b></div>
+    <div class="linha"><span>Ganho no seu bolso</span><b id="ganho">R$ 0</b></div>
+    <div class="barras">
+      <div class="barra"><div class="nome"><span>Na aplicação escolhida</span><b id="bA"></b></div><div class="trilho"><div class="cheio" id="gA" style="background:var(--verde)"></div></div></div>
+      <div class="barra"><div class="nome"><span>Na poupança (aprox. 0,5% ao mês)</span><b id="bP"></b></div><div class="trilho"><div class="cheio" id="gP" style="background:var(--azul)"></div></div></div>
+      <div class="barra"><div class="nome"><span>Parado na conta corrente</span><b id="bC"></b></div><div class="trilho"><div class="cheio" id="gC" style="background:var(--vermelho)"></div></div></div>
+    </div>
+  </section>
+
+  <section class="caixa cta">
+    <h2>Regra de ouro do caixa</h2>
+    <p>Dinheiro de emergência e caixa da empresa pedem <b>liquidez diária</b>: você saca no mesmo dia em que precisar. Compare sempre pelo percentual do CDI e confira se tem garantia do FGC.</p>
+    <p><b>Dúvidas sobre o caixa da sua empresa? Chama O Analista no WhatsApp: o link está na bio do <a href="https://www.instagram.com/oanalista.br/">@oanalista.br</a>.</b></p>
+  </section>
+
+  <p class="aviso">Conteúdo educacional, não é recomendação de investimento. Simulação aproximada: considera o CDI constante durante todo o prazo, aplica a alíquota de IR da tabela regressiva (22,5% até 6 meses, 20% até 1 ano, 17,5% até 2 anos e 15% acima disso) pelo prazo total sobre todo o rendimento e não considera IOF, taxas nem a TR da poupança.</p>
+</main>
+<script>
+  const fmt = v => v.toLocaleString('pt-BR', { style:'currency', currency:'BRL', maximumFractionDigits:2 });
+  const num = id => { const s = document.getElementById(id).value.replace(/\./g,'').replace(',', '.').replace(/[^\d.\-]/g,''); return parseFloat(s) || 0; };
+  const aliquota = meses => meses <= 6 ? .225 : meses <= 12 ? .20 : meses <= 24 ? .175 : .15;
+  function fv(ini, mes, n, taxa) { let v = ini; for (let i = 0; i < n; i++) v = v * (1 + taxa) + mes; return v; }
+  function calc() {
+    const ini = Math.max(0, num('ini')), mes = Math.max(0, num('mes')), n = Math.max(0, Math.min(600, Math.round(num('prazo'))));
+    const taxaAno = num('cdi') / 100 * num('pct') / 100;
+    const taxaMes = Math.pow(1 + taxaAno, 1 / 12) - 1;
+    const investido = ini + mes * n;
+    const final = fv(ini, mes, n, taxaMes);
+    const bruto = final - investido;
+    const ir = document.getElementById('tipo').value === 'isento' ? 0 : Math.max(0, bruto) * aliquota(n);
+    const liquido = final - ir;
+    const poup = fv(ini, mes, n, 0.005);
+    const set = (id, v) => document.getElementById(id).textContent = fmt(v);
+    set('liquido', liquido); set('investido', investido); set('bruto', bruto); set('ir', ir); set('ganho', liquido - investido);
+    set('bA', liquido); set('bP', poup); set('bC', investido);
+    const max = Math.max(liquido, poup, investido, 1);
+    document.getElementById('gA').style.width = (liquido / max * 100) + '%';
+    document.getElementById('gP').style.width = (poup / max * 100) + '%';
+    document.getElementById('gC').style.width = (investido / max * 100) + '%';
+  }
+  document.querySelectorAll('input, select').forEach(i => i.addEventListener('input', calc));
+  calc();
+</script>
+</body>
+</html>

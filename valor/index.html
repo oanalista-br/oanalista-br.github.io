@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora: quanto vale o seu negócio? | O Analista</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --amarelo:#f6c945; --creme:#fbf3dc; --marinho:#1f2a44; --vermelho:#d8432e; --verde:#2f8a4c; --tinta:#1b1b1b; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--creme); color:var(--tinta); font-family:"Comic Neue", system-ui, sans-serif; font-size:17px; line-height:1.45; }
+  .topo { background:var(--marinho); color:#fff; padding:10px 16px; font-weight:700; letter-spacing:.04em; font-size:14px; display:flex; justify-content:space-between; }
+  main { max-width:620px; margin:0 auto; padding:18px 16px 40px; }
+  h1 { font-family:Bangers, "Comic Neue", sans-serif; font-weight:400; font-size:38px; letter-spacing:.03em; line-height:1.05; margin:6px 0 4px; background:var(--amarelo); border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:10px 14px; }
+  .sub { margin:14px 0 18px; }
+  .caixa { background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:16px; margin:18px 0; }
+  .caixa h2 { font-family:Bangers, sans-serif; font-weight:400; letter-spacing:.04em; font-size:26px; margin:0 0 10px; color:var(--marinho); }
+  label { display:block; font-weight:700; margin:12px 0 4px; }
+  .dica { font-size:14px; color:#555; margin-top:2px; }
+  .campo { display:flex; align-items:center; border:2px solid var(--tinta); background:var(--creme); }
+  .campo span { padding:0 10px; font-weight:700; }
+  .campo input { flex:1; border:0; background:transparent; font:inherit; font-size:19px; padding:10px 8px; min-width:0; }
+  .campo input:focus { outline:3px solid var(--amarelo); }
+  .check { display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px dashed #bbb; cursor:pointer; }
+  .check:last-child { border-bottom:0; }
+  .check input { width:22px; height:22px; margin-top:2px; accent-color:var(--verde); flex:none; }
+  .resultado { background:var(--marinho); color:#fff; }
+  .resultado h2 { color:var(--amarelo); }
+  .valor { font-family:Bangers, sans-serif; font-size:46px; letter-spacing:.02em; color:var(--amarelo); line-height:1; margin:6px 0; }
+  .linha { display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.2); }
+  .linha:last-child { border-bottom:0; }
+  .linha b { white-space:nowrap; }
+  .alerta { background:var(--vermelho); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .ganho { background:var(--verde); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .cta { background:var(--amarelo); }
+  .cta p { margin:6px 0; }
+  .aviso { font-size:13px; color:#555; margin-top:22px; }
+</style>
+</head>
+<body>
+<div class="topo"><span>O ANALISTA</span><span>@OANALISTA.BR</span></div>
+<main>
+  <h1>Quanto vale o seu negócio?</h1>
+  <p class="sub">Ninguém paga pelo suor, paga pelo lucro. Preencha os números do seu negócio e responda 5 perguntas. A conta é a mesma que um comprador faria: o lucro de verdade do ano vezes um múltiplo.</p>
+
+  <section class="caixa">
+    <h2>1. O lucro de verdade</h2>
+    <label for="lucro">Quanto sobra por mês, em média, antes de você tirar o seu dinheiro?</label>
+    <div class="campo"><span>R$</span><input id="lucro" inputmode="decimal" value="14.000"></div>
+    <div class="dica">Faturamento menos todas as despesas (fornecedor, aluguel, funcionários, impostos), sem contar o que você tira pra você.</div>
+    <label for="salario">Quanto você pagaria a alguém para fazer o seu trabalho?</label>
+    <div class="campo"><span>R$</span><input id="salario" inputmode="decimal" value="4.000"></div>
+    <div class="dica">O comprador vai precisar pagar alguém no seu lugar. Por isso esse valor sai do lucro.</div>
+  </section>
+
+  <section class="caixa">
+    <h2>2. O que puxa o valor</h2>
+    <label class="check"><input type="checkbox" class="q"><span>Tenho clientes que compram todo mês ou contratos fechados.</span></label>
+    <label class="check"><input type="checkbox" class="q"><span>As contas da empresa são separadas das contas de casa.</span></label>
+    <label class="check"><input type="checkbox" class="q"><span>O negócio funciona uma semana inteira sem mim.</span></label>
+    <label class="check"><input type="checkbox" class="q"><span>Tenho equipe treinada e o passo a passo escrito.</span></label>
+    <label class="check"><input type="checkbox" class="q"><span>O lucro ficou estável ou cresceu nos últimos 12 meses.</span></label>
+  </section>
+
+  <section class="caixa resultado" aria-live="polite">
+    <h2>Seu negócio vale em torno de</h2>
+    <div class="valor" id="valor">R$ 0</div>
+    <div id="faixa" style="margin-bottom:10px"></div>
+    <div class="linha"><span>Lucro de verdade por ano</span><b id="lucroAno">R$ 0</b></div>
+    <div class="linha"><span>Múltiplo do seu negócio</span><b id="mult">2,0x</b></div>
+    <div id="msg"></div>
+  </section>
+
+  <section class="caixa cta">
+    <h2>Quer uma avaliação de verdade?</h2>
+    <p>Essa conta é o ponto de partida. Numa avaliação completa entram o setor, as dívidas, o estoque e o potencial de crescimento.</p>
+    <p><b>Chama O Analista no WhatsApp: o link está na bio do <a href="https://www.instagram.com/oanalista.br/">@oanalista.br</a>.</b></p>
+  </section>
+
+  <p class="aviso">Conteúdo educacional. É uma estimativa simplificada para pequenas empresas: múltiplos de 2 a 4 vezes o lucro do ano são uma referência comum, mas variam bastante por setor e por negócio. Não substitui uma avaliação profissional.</p>
+</main>
+<script>
+  const fmt = v => v.toLocaleString('pt-BR', { style:'currency', currency:'BRL', maximumFractionDigits:0 });
+  const num = id => { const s = document.getElementById(id).value.replace(/\./g,'').replace(',', '.').replace(/[^\d.\-]/g,''); return parseFloat(s) || 0; };
+  function calc() {
+    const anual = (num('lucro') - num('salario')) * 12;
+    const sim = [...document.querySelectorAll('.q')].filter(c => c.checked).length;
+    const mult = 2 + 0.4 * sim;
+    const msg = document.getElementById('msg');
+    document.getElementById('lucroAno').textContent = fmt(anual);
+    document.getElementById('mult').textContent = mult.toLocaleString('pt-BR', { minimumFractionDigits:1, maximumFractionDigits:1 }) + 'x';
+    if (anual <= 0) {
+      document.getElementById('valor').textContent = 'R$ 0';
+      document.getElementById('faixa').textContent = '';
+      msg.innerHTML = '<div class="alerta">Pagando alguém no seu lugar, o negócio não sobra lucro. Antes de pensar em valor, o foco é preço e custo.</div>';
+      return;
+    }
+    const valor = anual * mult;
+    document.getElementById('valor').textContent = fmt(valor);
+    document.getElementById('faixa').textContent = 'Faixa provável: ' + fmt(anual * Math.max(1.5, mult - 0.5)) + ' a ' + fmt(anual * (mult + 0.5));
+    msg.innerHTML = sim < 5
+      ? '<div class="ganho">Com os 5 itens marcados, o mesmo lucro valeria ' + fmt(anual * 4) + '. São ' + fmt(anual * 4 - valor) + ' a mais, só organizando o negócio.</div>'
+      : '<div class="ganho">Seu negócio já tem o que puxa o valor pra cima. Agora o jogo é crescer o lucro.</div>';
+  }
+  document.querySelectorAll('input').forEach(i => i.addEventListener('input', calc));
+  calc();
+</script>
+</body>
+</html>
