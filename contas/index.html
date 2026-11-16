@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Passo a passo: separe as contas da empresa e as suas | O Analista</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --amarelo:#f6c945; --creme:#fbf3dc; --marinho:#1f2a44; --vermelho:#d8432e; --verde:#2f8a4c; --tinta:#1b1b1b; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--creme); color:var(--tinta); font-family:"Comic Neue", system-ui, sans-serif; font-size:17px; line-height:1.45; }
+  .topo { background:var(--marinho); color:#fff; padding:10px 16px; font-weight:700; letter-spacing:.04em; font-size:14px; display:flex; justify-content:space-between; }
+  main { max-width:620px; margin:0 auto; padding:18px 16px 40px; }
+  h1 { font-family:Bangers, "Comic Neue", sans-serif; font-weight:400; font-size:38px; letter-spacing:.03em; line-height:1.05; margin:6px 0 4px; background:var(--amarelo); border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:10px 14px; }
+  .sub { margin:14px 0 18px; }
+  .caixa { background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:16px; margin:18px 0; }
+  .caixa h2 { font-family:Bangers, sans-serif; font-weight:400; letter-spacing:.04em; font-size:26px; margin:0 0 10px; color:var(--marinho); }
+  label { display:block; font-weight:700; margin:12px 0 4px; }
+  .dica { font-size:14px; color:#555; margin-top:2px; }
+  .campo { display:flex; align-items:center; border:2px solid var(--tinta); background:var(--creme); }
+  .campo span { padding:0 10px; font-weight:700; }
+  .campo input { flex:1; border:0; background:transparent; font:inherit; font-size:19px; padding:10px 8px; min-width:0; }
+  .campo input:focus { outline:3px solid var(--amarelo); }
+  .check { display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px dashed #bbb; cursor:pointer; }
+  .check:last-child { border-bottom:0; }
+  .check input { width:22px; height:22px; margin-top:2px; accent-color:var(--verde); flex:none; }
+  .resultado { background:var(--marinho); color:#fff; }
+  .resultado h2 { color:var(--amarelo); }
+  .valor { font-family:Bangers, sans-serif; font-size:46px; letter-spacing:.02em; color:var(--amarelo); line-height:1; margin:6px 0; }
+  .linha { display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.2); }
+  .linha:last-child { border-bottom:0; }
+  .linha b { white-space:nowrap; }
+  .alerta { background:var(--vermelho); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .ganho { background:var(--verde); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .cta { background:var(--amarelo); }
+  .cta p { margin:6px 0; }
+  .aviso { font-size:13px; color:#555; margin-top:22px; }
+
+  ol.passos { padding-left:0; list-style:none; counter-reset:p; }
+  ol.passos li { counter-increment:p; margin:14px 0; padding-left:52px; position:relative; }
+  ol.passos li::before { content:counter(p); position:absolute; left:0; top:-2px; font-family:Bangers,sans-serif; font-size:30px; width:40px; height:40px; background:var(--vermelho); color:#fff; border:3px solid var(--tinta); display:flex; align-items:center; justify-content:center; }
+  table { width:100%; border-collapse:collapse; }
+  td { padding:8px 4px; border-bottom:1px dashed #bbb; }
+  td:last-child { text-align:right; white-space:nowrap; font-weight:700; }
+  tr.total td { border-top:3px solid var(--tinta); border-bottom:0; font-size:19px; }
+  ul.check { list-style:none; padding:0; }
+  ul.check li { padding:8px 0 8px 34px; position:relative; border-bottom:1px dashed #bbb; }
+  ul.check li::before { content:""; position:absolute; left:0; top:9px; width:20px; height:20px; border:3px solid var(--tinta); background:#fff; }
+  a.botao { display:block; text-decoration:none; color:var(--tinta); background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:14px 16px; margin:16px 0; }
+  a.botao b { font-family:Bangers,sans-serif; font-weight:400; font-size:24px; letter-spacing:.03em; color:var(--marinho); display:block; }
+  a.botao span.tag { display:inline-block; background:var(--amarelo); border:2px solid var(--tinta); padding:0 8px; font-size:13px; font-weight:700; margin-bottom:6px; }
+</style>
+</head>
+<body>
+<div class="topo"><span>O ANALISTA</span><span>@OANALISTA.BR</span></div>
+<main>
+
+  <h1>Separe as contas da empresa e as suas</h1>
+  <p class="sub">O dinheiro da empresa não é o seu salário. Em 4 passos você separa as contas e passa a saber se o seu negócio dá lucro.</p>
+  <section class="caixa">
+    <h2>Por que separar</h2>
+    <p>Quando o dinheiro da loja e o da casa ficam na mesma conta, você não consegue saber se o negócio dá lucro. A venda entra, a conta de luz de casa sai, o fornecedor sai, o mercado sai, e no fim do mês sobra pouco sem ninguém saber onde o dinheiro foi parar.</p>
+    <p>Exemplo: a empresa faturou R$ 20 mil no mês. Parece ótimo. Mas se você tirou dinheiro do caixa toda semana para despesas pessoais, não dá para saber se sobraram R$ 3 mil de lucro ou se a empresa está no vermelho e você só não percebeu.</p>
+  </section>
+  <section class="caixa">
+    <h2>Os 4 passos</h2>
+    <ol class="passos">
+      <li><b>Tenha duas contas.</b> Uma conta só da empresa e outra só sua. Até o MEI pode abrir conta PJ, e muitos bancos digitais não cobram mensalidade.</li>
+      <li><b>Pague a si mesmo um salário fixo (pró-labore).</b> Escolha um valor que a empresa aguenta todo mês e um dia fixo, por exemplo dia 5. Transfira da conta PJ para a sua conta pessoal só esse valor, só nesse dia.</li>
+      <li><b>Toda venda entra na conta da empresa.</b> Pix, cartão ou dinheiro: tudo cai na conta PJ, sem exceção. Dinheiro vivo? Deposite. Toda despesa da empresa também sai dessa conta.</li>
+      <li><b>Lucro, só depois de fechar o mês.</b> No fim do mês, some o que entrou e tire tudo o que saiu, inclusive o seu pró-labore. O que sobrar é o lucro. Aí você decide: guardar no caixa, reinvestir ou retirar uma parte.</li>
+    </ol>
+  </section>
+  <section class="caixa">
+    <h2>Exemplo do mês</h2>
+    <p>Com as contas separadas, o fechamento fica assim (números fictícios):</p>
+    <table>
+      <tr><td>Faturou (vendas na conta PJ)</td><td>R$ 20.000</td></tr>
+      <tr><td>Despesas da empresa (fornecedor, aluguel, taxas, impostos)</td><td>- R$ 12.000</td></tr>
+      <tr><td>Pró-labore (seu salário, dia 5)</td><td>- R$ 5.000</td></tr>
+      <tr class="total"><td><b>Lucro do mês</b></td><td>R$ 3.000</td></tr>
+    </table>
+    <p>Sem separar, esses R$ 3 mil se misturam com o mercado de casa e somem. Separado, você sabe que a empresa dá lucro e quanto.</p>
+  </section>
+  <section class="caixa">
+    <h2>Checklist para começar esta semana</h2>
+    <ul class="check">
+      <li>Abrir a conta PJ (ou separar uma conta que já existe só para a empresa)</li>
+      <li>Trocar a chave Pix e a maquininha para cair na conta PJ</li>
+      <li>Definir o valor e o dia do pró-labore</li>
+      <li>Pagar as despesas da empresa só pela conta PJ</li>
+      <li>Marcar na agenda o fechamento do mês (último dia útil)</li>
+    </ul>
+  </section>
+  <section class="caixa cta" style="background:var(--amarelo)">
+    <h2>Quanto você pode se pagar?</h2>
+    <p>Use a <a href="https://docs.google.com/spreadsheets/d/1bhIFaPPqUX5WFWTvPICSooOfk-YNhCtYbwrMKaxc71s/copy">planilha de pró-labore e orçamento</a>, grátis.</p>
+    <p><b>Quer ajuda? Chama O Analista no WhatsApp: o link está na bio do <a href="https://www.instagram.com/oanalista.br/">@oanalista.br</a>.</b></p>
+  </section>
+  <p class="aviso">Conteúdo educacional. Números do exemplo são fictícios.</p>
+
+</main>
+</body>
+</html>

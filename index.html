@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materiais gratuitos | O Analista</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --amarelo:#f6c945; --creme:#fbf3dc; --marinho:#1f2a44; --vermelho:#d8432e; --verde:#2f8a4c; --tinta:#1b1b1b; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--creme); color:var(--tinta); font-family:"Comic Neue", system-ui, sans-serif; font-size:17px; line-height:1.45; }
+  .topo { background:var(--marinho); color:#fff; padding:10px 16px; font-weight:700; letter-spacing:.04em; font-size:14px; display:flex; justify-content:space-between; }
+  main { max-width:620px; margin:0 auto; padding:18px 16px 40px; }
+  h1 { font-family:Bangers, "Comic Neue", sans-serif; font-weight:400; font-size:38px; letter-spacing:.03em; line-height:1.05; margin:6px 0 4px; background:var(--amarelo); border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:10px 14px; }
+  .sub { margin:14px 0 18px; }
+  .caixa { background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:16px; margin:18px 0; }
+  .caixa h2 { font-family:Bangers, sans-serif; font-weight:400; letter-spacing:.04em; font-size:26px; margin:0 0 10px; color:var(--marinho); }
+  label { display:block; font-weight:700; margin:12px 0 4px; }
+  .dica { font-size:14px; color:#555; margin-top:2px; }
+  .campo { display:flex; align-items:center; border:2px solid var(--tinta); background:var(--creme); }
+  .campo span { padding:0 10px; font-weight:700; }
+  .campo input { flex:1; border:0; background:transparent; font:inherit; font-size:19px; padding:10px 8px; min-width:0; }
+  .campo input:focus { outline:3px solid var(--amarelo); }
+  .check { display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-bottom:1px dashed #bbb; cursor:pointer; }
+  .check:last-child { border-bottom:0; }
+  .check input { width:22px; height:22px; margin-top:2px; accent-color:var(--verde); flex:none; }
+  .resultado { background:var(--marinho); color:#fff; }
+  .resultado h2 { color:var(--amarelo); }
+  .valor { font-family:Bangers, sans-serif; font-size:46px; letter-spacing:.02em; color:var(--amarelo); line-height:1; margin:6px 0; }
+  .linha { display:flex; justify-content:space-between; gap:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.2); }
+  .linha:last-child { border-bottom:0; }
+  .linha b { white-space:nowrap; }
+  .alerta { background:var(--vermelho); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .ganho { background:var(--verde); color:#fff; padding:10px 12px; font-weight:700; margin-top:10px; }
+  .cta { background:var(--amarelo); }
+  .cta p { margin:6px 0; }
+  .aviso { font-size:13px; color:#555; margin-top:22px; }
+
+  ol.passos { padding-left:0; list-style:none; counter-reset:p; }
+  ol.passos li { counter-increment:p; margin:14px 0; padding-left:52px; position:relative; }
+  ol.passos li::before { content:counter(p); position:absolute; left:0; top:-2px; font-family:Bangers,sans-serif; font-size:30px; width:40px; height:40px; background:var(--vermelho); color:#fff; border:3px solid var(--tinta); display:flex; align-items:center; justify-content:center; }
+  table { width:100%; border-collapse:collapse; }
+  td { padding:8px 4px; border-bottom:1px dashed #bbb; }
+  td:last-child { text-align:right; white-space:nowrap; font-weight:700; }
+  tr.total td { border-top:3px solid var(--tinta); border-bottom:0; font-size:19px; }
+  ul.check { list-style:none; padding:0; }
+  ul.check li { padding:8px 0 8px 34px; position:relative; border-bottom:1px dashed #bbb; }
+  ul.check li::before { content:""; position:absolute; left:0; top:9px; width:20px; height:20px; border:3px solid var(--tinta); background:#fff; }
+  a.botao { display:block; text-decoration:none; color:var(--tinta); background:#fff; border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta); padding:14px 16px; margin:16px 0; }
+  a.botao b { font-family:Bangers,sans-serif; font-weight:400; font-size:24px; letter-spacing:.03em; color:var(--marinho); display:block; }
+  a.botao span.tag { display:inline-block; background:var(--amarelo); border:2px solid var(--tinta); padding:0 8px; font-size:13px; font-weight:700; margin-bottom:6px; }
+</style>
+</head>
+<body>
+<div class="topo"><span>O ANALISTA</span><span>@OANALISTA.BR</span></div>
+<main>
+
+  <h1>Materiais gratuitos do O Analista</h1>
+  <p class="sub">Planilhas e calculadoras para quem tem MEI ou pequena empresa organizar o dinheiro. É só tocar e usar. Nas planilhas, toque em "Fazer uma cópia" para ter a sua.</p>
+  <a class="botao" href="https://docs.google.com/spreadsheets/d/18znhiJkkphPj51XeucIVCA-8cS4qX446WEib7XV3lXk/copy"><span class="tag">Planilha Google · palavra LUCRO</span><b>Planilha de fluxo de caixa</b>Veja o buraco no caixa antes de cair nele.</a><a class="botao" href="https://docs.google.com/spreadsheets/d/1bhIFaPPqUX5WFWTvPICSooOfk-YNhCtYbwrMKaxc71s/copy"><span class="tag">Planilha Google · palavra ORÇAMENTO</span><b>Pró-labore, orçamento e reserva</b>Quanto tirar da empresa, como dividir em casa e quando a reserva fica pronta.</a><a class="botao" href="https://docs.google.com/spreadsheets/d/1TqsF3IKsIwUThEYyHwQBxKVL5nroYRuF2fMbHtIYsng/copy"><span class="tag">Planilha Google · palavra PREÇO</span><b>Calculadora de markup e margem</b>Descubra o lucro de verdade por unidade e o preço certo.</a><a class="botao" href="valor/"><span class="tag">Calculadora online · palavra VALOR</span><b>Quanto vale o seu negócio?</b>Calcule o valor da sua empresa em 2 minutos.</a><a class="botao" href="cdi/"><span class="tag">Calculadora online · palavra CDI</span><b>Quanto rende o seu dinheiro no CDI?</b>Simule o caixa ou a reserva rendendo, já com o imposto.</a><a class="botao" href="contas/"><span class="tag">Guia online · palavra CONTAS</span><b>Separe as contas da empresa e as suas</b>O passo a passo em 4 etapas, com checklist.</a>
+  <section class="caixa cta" style="background:var(--amarelo)">
+    <h2>Quer ajuda com o seu negócio?</h2>
+    <p><b>Chama O Analista no WhatsApp: o link está na bio do <a href="https://www.instagram.com/oanalista.br/">@oanalista.br</a>.</b></p>
+  </section>
+  <p class="aviso">Conteúdo educacional, não é recomendação de investimento.</p>
+
+</main>
+</body>
+</html>
