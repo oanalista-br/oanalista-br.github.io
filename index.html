@@ -9,6 +9,7 @@
 <meta property="og:description" content="Descubra o lucro de verdade, o fôlego do caixa e quanto vale o seu negócio. Diagnóstico gratuito.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://oanalista-br.github.io/">
+<meta property="og:image" content="https://oanalista-br.github.io/img/andre-hero.jpg">
 <meta name="theme-color" content="#14213d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,6 +23,7 @@
   header { position:sticky; top:0; z-index:10; background:rgba(20,33,61,.97); backdrop-filter:blur(6px); }
   header .wrap { display:flex; align-items:center; justify-content:space-between; height:60px; }
   .marca { display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-weight:800; letter-spacing:.02em; }
+  .avatar { width:36px; height:36px; border-radius:50%; object-fit:cover; border:2px solid var(--ouro); }
   .selo { width:34px; height:34px; border-radius:8px; background:var(--ouro); color:var(--navy); display:grid; place-items:center; font-weight:800; font-size:15px; }
   header nav a { color:#cfd6e6; text-decoration:none; font-size:14px; font-weight:600; margin-left:22px; }
   header nav a:hover { color:#fff; }
@@ -99,13 +101,25 @@
   footer a { color:#cfd6e6; text-decoration:none; margin-right:18px; }
   footer p { margin:0; max-width:760px; }
   .zap-fixo { position:fixed; right:16px; bottom:16px; z-index:20; width:56px; height:56px; border-radius:50%; background:#25d366; display:grid; place-items:center; box-shadow:0 8px 24px rgba(0,0,0,.25); }
+  .foto-hero { position:relative; max-width:380px; justify-self:center; }
+  .foto-hero img { width:100%; display:block; border-radius:18px; box-shadow:0 24px 60px rgba(0,0,0,.35); }
+  .cracha { position:absolute; left:-18px; bottom:24px; background:#fff; color:var(--texto); border-radius:12px; padding:12px 16px; box-shadow:0 12px 30px rgba(0,0,0,.25); border-left:4px solid var(--ouro); }
+  .cracha b { display:block; font-size:15px; } .cracha span { font-size:12.5px; color:var(--cinza); }
+  @media (max-width:860px){ .foto-hero{ max-width:300px; } .cracha{ left:-8px; } }
+  .rel { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center; margin-top:36px; }
+  .rel img { width:100%; border-radius:16px; display:block; }
+  .rel .painel { box-shadow:0 18px 40px rgba(20,33,61,.14); border:1px solid var(--linha); }
+  @media (max-width:860px){ .rel{ grid-template-columns:1fr; } }
+  .sobre-foto { position:relative; }
+  .sobre-foto img { width:100%; border-radius:16px; display:block; }
+  .sobre-foto .cracha { left:16px; bottom:16px; }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="marca" href="#"><span class="selo">OA</span>O ANALISTA</a>
+    <a class="marca" href="#"><img class="avatar" src="img/andre-avatar.jpg" alt="André Varotto">O ANALISTA</a>
     <nav>
       <a href="#como">Como funciona</a>
       <a href="#projetos">Projetos</a>
@@ -127,14 +141,9 @@
       </div>
       <div class="nota">Gratuito, sem compromisso. Seus números ficam só comigo.</div>
     </div>
-    <div class="painel" aria-label="Exemplo do relatório">
-      <h3>O que o seu relatório mostra</h3>
-      <div class="sub">Exemplo ilustrativo de uma padaria</div>
-      <div class="kpi"><span>Margem de contribuição</span><b>52,2%<span class="tag t-ok">boa</span></b></div>
-      <div class="kpi"><span>Sobra no fim do mês</span><b>R$ 1.000<span class="tag t-at">apertada</span></b></div>
-      <div class="kpi"><span>Fôlego de caixa</span><b>11 dias<span class="tag t-ruim">curto</span></b></div>
-      <div class="kpi"><span>Ponto de equilíbrio</span><b>R$ 43.085</b></div>
-      <div class="kpi"><span>Quanto o negócio vale hoje</span><b>R$ 95.600</b></div>
+    <div class="foto-hero">
+      <img src="img/andre-hero.jpg" alt="André Varotto, analista CNPI">
+      <div class="cracha"><b>André Varotto</b><span>Analista CNPI · credenciado CVM</span></div>
     </div>
   </div>
 </section>
@@ -166,6 +175,18 @@
       <div class="card"><div class="num">1</div><h3>Você responde</h3><p>Perguntas sobre o seu negócio e os números aproximados do mês. Não precisa de documento nem de contador.</p></div>
       <div class="card"><div class="num">2</div><h3>Eu analiso</h3><p>Calculo margem, lucro de verdade, ponto de equilíbrio, fôlego do caixa e uma estimativa do valor da empresa.</p></div>
       <div class="card"><div class="num">3</div><h3>Você recebe o relatório</h3><p>No seu WhatsApp, com os 3 pontos que mais pedem atenção e o que fazer em cada um.</p></div>
+    </div>
+    <div class="rel">
+      <img src="img/andre-relatorio.jpg" alt="André Varotto analisando o relatório">
+      <div class="painel" aria-label="Exemplo do relatório">
+      <h3>O que o seu relatório mostra</h3>
+      <div class="sub">Exemplo ilustrativo de uma padaria</div>
+      <div class="kpi"><span>Margem de contribuição</span><b>52,2%<span class="tag t-ok">boa</span></b></div>
+      <div class="kpi"><span>Sobra no fim do mês</span><b>R$ 1.000<span class="tag t-at">apertada</span></b></div>
+      <div class="kpi"><span>Fôlego de caixa</span><b>11 dias<span class="tag t-ruim">curto</span></b></div>
+      <div class="kpi"><span>Ponto de equilíbrio</span><b>R$ 43.085</b></div>
+      <div class="kpi"><span>Quanto o negócio vale hoje</span><b>R$ 95.600</b></div>
+    </div>
     </div>
     <div class="centro"><a class="btn btn-navy" href="diagnostico/">Começar meu diagnóstico</a></div>
   </div>
@@ -208,14 +229,15 @@
 
 <section class="bloco">
   <div class="wrap sobre">
-    <div class="quadro">
-      <span class="eyebrow">Sobre o O Analista</span>
-      <p>Por trás do perfil está um <b>analista financeiro</b> que passa o dia estudando empresas, balanços e valuation.</p>
-      <p>A ideia é simples: levar para o dono de MEI e de pequena empresa as mesmas ferramentas que o mercado usa para avaliar grandes empresas, <b>sem economês</b>.</p>
-      <p style="margin:0">Todos os dias tem conteúdo novo no <a href="https://www.instagram.com/oanalista.br/" style="color:#fff"><b>@oanalista.br</b></a>.</p>
+    <div class="sobre-foto">
+      <img src="img/andre-analise.jpg" alt="André Varotto">
+      <div class="cracha"><b>André Luís Otávio Varotto dos Santos</b><span>Analista CNPI · credenciado CVM</span></div>
     </div>
     <div>
-      <h2>Como eu trabalho</h2>
+      <span class="eyebrow" style="color:#b8860b">Sobre</span>
+      <h2>Prazer, eu sou o André</h2>
+      <p style="color:var(--cinza);margin:0 0 18px">Sou analista de investimentos com certificação CNPI e credenciado na CVM. No dia a dia, estudo empresas, balanços e valuation. No <a href="https://www.instagram.com/oanalista.br/"><b>@oanalista.br</b></a>, levo para o dono de MEI e de pequena empresa as mesmas ferramentas que o mercado usa para avaliar grandes empresas, sem economês.</p>
+      <h3 style="margin:0 0 12px">Como eu trabalho</h3>
       <div class="pilares">
         <div class="pilar"><span class="ic"></span><div><b>Números primeiro.</b> Nada de achismo: cada recomendação sai de um cálculo que você entende.</div></div>
         <div class="pilar"><span class="ic"></span><div><b>Português claro.</b> Explico como num papo de boteco, sem termos difíceis.</div></div>
@@ -255,7 +277,7 @@
       <div><a href="https://www.instagram.com/oanalista.br/">Instagram</a><a href="https://www.tiktok.com/@oanalista.br">TikTok</a><a href="https://wa.me/5544999743738">WhatsApp (44) 99974-3738</a></div>
       <div>© 2026 O Analista</div>
     </div>
-    <p>O conteúdo deste site é educacional e não constitui recomendação de investimento. Os exemplos são ilustrativos. Os projetos são de gestão financeira e avaliação de empresas.</p>
+    <p>André Luís Otávio Varotto dos Santos, analista CNPI/CVM. O conteúdo deste site é educacional e não constitui recomendação de investimento. Os exemplos são ilustrativos. Os projetos são de gestão financeira e avaliação de empresas.</p>
   </div>
 </footer>
 
